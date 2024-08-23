@@ -1,4 +1,5 @@
 use macroquad::prelude::*;
+use surf::get;
 
 fn window_conf() -> Conf {
     Conf {
@@ -23,6 +24,7 @@ async fn main() {
     let mut pixels_per_point: Option<f32> = None;
 
     loop {
+        let res = surf::get("https://httpbin.org/get").await;
         clear_background(WHITE);
 
         egui_macroquad::ui(|egui_ctx| {
